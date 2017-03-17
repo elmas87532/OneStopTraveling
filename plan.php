@@ -1,3 +1,7 @@
+<?php
+session_start();
+include 'connect.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +25,13 @@ select{
 	float: left;
 }
 
+#submit_yes{
+	width: 98px;
+	height: 128px;
+	background-image: url(./img/check-yes.png);
+	border: 0px;
+	background-color:white;
+}
 
 	</style>
 	
@@ -38,10 +49,10 @@ select{
 			<div class="sidebar-options">
 				<ul>
 					<li>Hi , !@#$</li>
-					<li><img src="img/sidebar-home.png"><a href="index.html">首頁</a></li>
-					<li><img src="img/sidebar-plan.png"><a href="plan.html">行程規劃</a></li>
-					<li><img src="img/sidebar-history.png"><a href="history.html">歷史紀錄</a></li>
-					<li><img src="img/sidebar-fav.png"><a href="fav.html">收藏</a></li>
+					<li><img src="img/sidebar-home.png"><a href="index.php">首頁</a></li>
+					<li><img src="img/sidebar-plan.png"><a href="plan.php">行程規劃</a></li>
+					<li><img src="img/sidebar-history.png"><a href="history.php">歷史紀錄</a></li>
+					<li><img src="img/sidebar-fav.png"><a href="fav.php">收藏</a></li>
 					<li><img src="img/sidebar-logout.png"><a href="">登出</a></li>
 				</ul>
 			</div>
@@ -52,38 +63,41 @@ select{
 		<div class="content">
 			<div class="block-content">
 				行程名稱：<br/>
+				<form action="plan-setting.php" method="post">
 				<input class="css-input" type="text" id="plan_name" name="plan_name" /><br/><br/>
 				行程日期：<br/>
-				<select id="yr">
+				<select name="syr">
 					<option>2017</option>
 					<option>2018</option>
 					<option>2019</option>
 					<option>2020</option>
 				</select>
-				<select id="mon" >
+				<select name="smon" >
 					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
 				</select>
-				<select id="date">
+				<select name="sdate">
 					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
 				</select><br/>
 				<p style="width:400px;padding-left:150px;font-size:20px;color:#BEBEBE;">|</p>
-				<select id="yr">
+				<select name="eyr">
 					<option>2017</option>
 					<option>2018</option>
 					<option>2019</option>
 					<option>2020</option>
 				</select>
-				<select id="mon" >
+				<select name="emon" >
 					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
 				</select>
-				<select id="date">
+				<select name="edate">
 					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
-				</select><br/><br/>
+				</select>
+				<br/><br/>
 				<p style="text-align:right;margin-bottom:50px;">
-				<a href="plan-setting.html"><img src="img/check-yes.png"></a>
+				<input type="submit" name="submit_yes" id="submit_yes" value=" ">
+				
 				<a href="#"><img src="img/check-no.png"></a>
 				</p>
-				
+				</form>
 			</div>
 			
 		</div>

@@ -61,10 +61,10 @@ select{
 			<div class="sidebar-options">
 				<ul>
 					<li>Hi , !@#$</li>
-					<li><img src="img/sidebar-home.png"><a href="index.html">首頁</a></li>
-					<li><img src="img/sidebar-plan.png"><a href="plan.html">行程規劃</a></li>
-					<li><img src="img/sidebar-history.png"><a href="history.html">歷史紀錄</a></li>
-					<li><img src="img/sidebar-fav.png"><a href="fav.html">收藏</a></li>
+					<li><img src="img/sidebar-home.png"><a href="index.php">首頁</a></li>
+					<li><img src="img/sidebar-plan.png"><a href="plan.php">行程規劃</a></li>
+					<li><img src="img/sidebar-history.png"><a href="history.php">歷史紀錄</a></li>
+					<li><img src="img/sidebar-fav.png"><a href="fav.php">收藏</a></li>
 					<li><img src="img/sidebar-logout.png"><a href="">登出</a></li>
 				</ul>
 			</div>

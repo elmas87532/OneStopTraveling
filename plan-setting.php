@@ -123,7 +123,8 @@ function run_ajax() {
 						</div>
 						<div class="item-info">
 							<p>知本溫泉(景點名稱)</p>
-							<p><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14719.370745323777!2d120.2836491!3d22.7340878!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe6e681ecaffe55f2!2z5ZyL56uL6auY6ZuE5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1489026673426" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
+							<p><a href="googlemaps_direction.php">111</a></p>
+							<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14719.370745323777!2d120.2836491!3d22.7340878!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe6e681ecaffe55f2!2z5ZyL56uL6auY6ZuE5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1489026673426" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
 						</div>
 					</li>
 					

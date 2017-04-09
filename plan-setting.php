@@ -81,7 +81,7 @@ function run_ajax() {
 
 	</script>
 </head>
-<body>
+<body onload="getTime()">
 	<div class="wrap">
 		<div class="top">
 			<div class="side-menu"><button class="side-menu-button" id="switchSideBar"><img src="img/side-menu.png"></button></div>
@@ -121,9 +121,38 @@ function run_ajax() {
 						<div class="sap">
 							<div class="time-spot"></div>
 						</div>
-						<div class="item-info">
+						<div class="item-info" >
 							<p>知本溫泉(景點名稱)</p>
-							<p><a href="googlemaps_direction.php">111</a></p>
+							<div class="parse_html" style="visibility: hidden; display:none;" >
+							<?php
+								$url = 'http://localhost/One%20Stop%20Traveling/googlemaps_direction.php';
+								$ch = curl_init();
+								//$timeout = 10;
+								curl_setopt($ch, CURLOPT_URL, $url);
+								curl_setopt($ch, CURLOPT_HEADER, false);
+								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+								curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
+								curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) chrome/34.0.1847.131 Safari/537.36');
+								// curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+								$html = curl_exec($ch);
+								  
+								$coding = mb_detect_encoding($html);
+								if ($coding != "UTF-8" || !mb_check_encoding($html, "UTF-8"))
+								$html = mb_convert_encoding($html, 'utf-8', 'GBK,UTF-8,ASCII');
+								
+								echo $html;
+								curl_close($ch);
+							?>
+							</div>
+							<script type="text/javascript">
+								function getTime() {
+									var distance = $('.adp-summary > span:nth-child(1)').text();
+									var time = $('.adp-summary > span:nth-child(3)').text();
+									document.getElementById('direction').innerHTML = distance +','+ time;
+									//console.log(distance +','+ time);
+								}
+							</script>
+							<p><a href="googlemaps_direction.php" id="direction" style="text-decoration: none;font-size:30px;"></a></p>
 							<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14719.370745323777!2d120.2836491!3d22.7340878!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe6e681ecaffe55f2!2z5ZyL56uL6auY6ZuE5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1489026673426" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
 						</div>
 					</li>

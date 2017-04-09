@@ -89,13 +89,13 @@ html, body {
 @media only screen and (max-width: 375px) {
 
   #map {
-    height: 50%;
+    height: 70%;
     width: 100%;
     float: top;
     margin: 0;
   }
   #right-panel {
-    height: 50%;
+    height: auto;
     width: auto;
     float: none;
     
@@ -115,8 +115,12 @@ html, body {
       </select>
     </div>
     <div id="map"></div>
-    <div id="right-panel"></div>
-    <button onclick="myFunction()">Click me</button>
+    <div id="right-panel" align="center">
+      <button id="slideUp_button" >▲</button>
+      <button id="slideDown_button" >▼</button>
+    </div>
+    <!-- <button onclick="myFunction()">Click me</button> -->
+
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
@@ -167,7 +171,8 @@ function initMap() {
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   // var start = document.getElementById('start').value;
   // var end = document.getElementById('end').value;
-  var selectedMode = document.getElementById('mode').value;//從前端mode取值，並放入資料庫
+  //從前端mode取值，並放入資料庫
+  var selectedMode = document.getElementById('mode').value;
   $.ajax({
      url: 'googlemaps_direction.php', //This is the current doc
      type: "POST",
@@ -193,11 +198,43 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     }
   });
 }
+//window.onload=myFunction();
 
+//距離及時間
 function myFunction() {
+  // var distance = $('span[jstcache="24"]').text();
+  // var time = $('span[jstcache="50"]').text();
+  var distance = $('.adp-summary > span:nth-child(1)').text();
   var time = $('.adp-summary > span:nth-child(3)').text();
-  console.log(time);
+  console.log(distance +','+ time);
+
+  // $.ajax({
+  //    url: 'plan-setting.php', //This is the current doc
+  //    type: "POST",
+  //    dataType:'text', // add json datatype to get json
+  //    data: ({Dis: distance}),
+  //    success: function(data){
+  //        //console.log(data);
+  //    }
+  // });
 }
+
+
+
+$('#slideUp_button').click(function() {
+  $('#map').animate({height: '20%'}, 'slow', function(e){ 
+      $(".log").text('Slide Up Transition Complete');
+  });
+  //$('#slideUp_button').remove();
+  //$('#right-panel').append('<button>123</button>');
+});
+$('#slideDown_button').click(function() {
+  $('#map').animate( {height: '70%'}, 'slow', function(e) {
+      $(".log").text('Slide Down Transition Complete');
+   });      
+  //$('#slideDown_button').remove();
+});
+
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuo23O04A6RFr2mDaBWbGoI_YbQpweyYk&signed_in=true&callback=initMap"
@@ -205,7 +242,7 @@ function myFunction() {
   </body>
 </html>
 <?php 
-  $Mode = $_POST['Mode']; 
-  $update="UPDATE activity SET Act_Mode='$Mode' WHERE Act_ID = 1"; 
-  mysqli_query($conn,$update); 
+  @$Mode = $_POST['Mode']; 
+  @$update="UPDATE activity SET Act_Mode='$Mode' WHERE Act_ID = 1"; 
+  @mysqli_query($conn,$update); 
 ?>

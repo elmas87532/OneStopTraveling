@@ -1,99 +1,134 @@
-<?php
-session_start();
-include 'connect.php';
-?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>One Stop Traveling</title>
-	<link rel="stylesheet" type="text/css" href="css/all.css">
-	<script src="js/jquery.js"></script>
-	<script src="js/all.js"></script>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
 	<style type="text/css">
-.css-input { border:0px; border-bottom: 1px solid #BEBEBE;font-size:32px; padding:6px;} 
-.css-input:focus { outline:none; }
-.content ul{
-	margin-top: 30px;
-}
-.content li{
-	float: left;
-	background-color: #FFC000;
-	width: 40%;
-	height: 280px;
-	color: white;
-	padding: 20px;
-	margin: 2% !important;
-	border-radius: 7%;
+body {
+	font-family: Microsoft JhengHei;
 	text-align: center;
-}
-.content li img{
-	margin-top: 50px;
-	margin-left: 50px;
-	width: 157px;
-	height: 157px;
-}
-.content li .opt{
-	float: left;
-	width: 100%;
-	margin-bottom: 30px;
-}
-.content li p{
-	color: black;
-	font-size: 48px;
-	margin-bottom: 50px;
-}
-.content li .opt a img{
-	float: right;
-	margin-right: 5px;
-}
-.content li p a{
-	color: black;
-	text-decoration: none;
-}
-.content li p a:hover{
-	color: #8F8F8F;
+	/*background-color: lightblue;*/
 }
 
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+@media only screen and (max-width: 450px) {
+	div.tab button {
+	    background-color: inherit;
+	    float: center;
+	    border: none;
+	    outline: none;
+	    cursor: pointer;
+	    padding: 14px 16px;
+	    transition: 0.3s;
+	    font-size: 15px;
+	}
+	iframe{
+		float: center;
+		max-width:330px;
+        height: 500px;
+	}
+}
+@media only screen and (max-width: 330px) {
+	div.tab button {
+	    background-color: inherit;
+	    float: center;
+	    border: none;
+	    outline: none;
+	    cursor: pointer;
+	    padding: 14px 16px;
+	    transition: 0.3s;
+	    font-size: 18px;
+	}
+	iframe{
+		float: center;
+		max-width:280px;
+        height: 500px;
+	}
+}
 	</style>
-	
 </head>
 <body>
-	<div class="wrap">
-		<div class="top">
-			<div class="side-menu"><button class="side-menu-button" id="switchSideBar"><img src="img/side-menu.png"></button></div>
-			<div class="title">歷史紀錄</div>
-		</div>
-		<div class="sidebar" id="sidebar">
-			<div class="self-photo">
-				<img src="img/test.jpg">
-			</div>
-			<div class="sidebar-options">
-				<ul>
-					<li>Hi , !@#$</li>
-					<li><img src="img/sidebar-home.png"><a href="index.php">首頁</a></li>
-					<li><img src="img/sidebar-plan.png"><a href="plan.php">行程規劃</a></li>
-					<li><img src="img/sidebar-history.png"><a href="history.php">歷史紀錄</a></li>
-					<li><img src="img/sidebar-fav.png"><a href="fav.php">收藏</a></li>
-					<li><img src="img/sidebar-logout.png"><a href="">登出</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="x-sidebar-top"></div>
-		<div class="x-sidebar"></div>
-		
-		<div class="content">
-			<ul>
-				
-				<li><img src="img/train.png"></li>
-				<li><img src="img/mrt.png"></li>
-				<li><img src="img/hsr.png"></li>
-				<li><img src="img/bus.png"></li>
-				<li><img src="img/taxi.png"></li>
-				<li><img src="img/moto.png"></li>
-				
-			</ul>
-			
-		</div>
-	</div>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'MRT')" id="defaultOpen">捷運</button>
+  <button class="tablinks" onclick="window.open('http://ibus.tbkc.gov.tw/cms/driving-map?lang=Cht', config='height=500,width=500');">公車</button>
+  <button class="tablinks" onclick="openCity(event, 'TAXI')">計程車</button>
+  <button class="tablinks" onclick="window.open('https://www.c-bike.com.tw/Portal/Station/List', config='height=500,width=500');">腳踏車</button>
+  <button class="tablinks" onclick="openCity(event, 'RENTAL')">租車</button>
+</div>
+
+<div id="MRT" class="tabcontent">
+  <iframe src="http://easygo.krtco.com.tw/mobile/index.html" width="1000" height="500" scrolling="yes"></iframe>
+</div>
+
+<div id="BUS" class="tabcontent">
+  <!-- <iframe src="http://ibus.tbkc.gov.tw/cms/driving-map?lang=Cht" width="1000" height="500" scrolling="yes"></iframe> -->
+</div>
+
+<div id="TAXI" class="tabcontent">
+  <iframe src="http://www.mtaxi.com.tw/islandwide/" width="1000" height="500" scrolling="yes"></iframe>
+</div>
+
+<div id="BIKE" class="tabcontent">
+  <!-- <iframe src="https://www.c-bike.com.tw/Portal/Station/List" width="1000" height="500" scrolling="yes"></iframe> -->
+</div>
+
+<div id="RENTAL" class="tabcontent">
+  <iframe src="https://www.car-plus.com.tw/ugC_Branch.asp?hidCommunications=1" width="1000" height="500" scrolling="yes"></iframe>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+     
 </body>
-</html>
+</html> 
